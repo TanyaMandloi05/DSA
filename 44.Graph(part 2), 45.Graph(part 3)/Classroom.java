@@ -492,85 +492,85 @@ public class Classroom {
 //       }
 // }
 
-// //Topological sorting using Bfs (Khan's algorithm)..
-// import java.util.*;
-// public class Classroom {
-//     static class Edge {
-//         int src;
-//         int des;
-//         int wt;
+//Topological sorting using Bfs (Khan's algorithm)..
+import java.util.*;
+public class Classroom {
+    static class Edge {
+        int src;
+        int des;
+        int wt;
 
-//         public Edge(int s, int d, int w) {
-//             this.src = s;
-//             this.des = d;
-//             this.wt = w;
-//         }
-//     }
+        public Edge(int s, int d, int w) {
+            this.src = s;
+            this.des = d;
+            this.wt = w;
+        }
+    }
 
-//     static void createGraph(ArrayList<Edge> graph[], int v) {
-//         for(int i=0; i<v; i++) {
-//             graph[i] = new ArrayList<>();
-//         }
+    static void createGraph(ArrayList<Edge> graph[], int v) {
+        for(int i=0; i<v; i++) {
+            graph[i] = new ArrayList<>();
+        }
      
-//         //2 vertex
-//         graph[2].add(new Edge(2, 3, 1));
+        //2 vertex
+        graph[2].add(new Edge(2, 3, 1));
 
-//         //3 vertex
-//         graph[3].add(new Edge(3, 1, 1));
+        //3 vertex
+        graph[3].add(new Edge(3, 1, 1));
         
-//         //4 vertex
-//         graph[4].add(new Edge(4, 0, 1));
-//         graph[4].add(new Edge(4, 1, 1));
+        //4 vertex
+        graph[4].add(new Edge(4, 0, 1));
+        graph[4].add(new Edge(4, 1, 1));
         
-//         //5 vertex
-//         graph[5].add(new Edge(5, 0, 1));
-//         graph[5].add(new Edge(5, 2, 1));
+        //5 vertex
+        graph[5].add(new Edge(5, 0, 1));
+        graph[5].add(new Edge(5, 2, 1));
         
-//     }
+    }
 
-//      public static void calIndeg(ArrayList<Edge> graph[], int indeg[]) {
+     public static void calIndeg(ArrayList<Edge> graph[], int indeg[]) {
 
-//         for(int i=0; i< graph.length; i++) {
-//             int v = i;
+        for(int i=0; i< graph.length; i++) {
+            int v = i;
 
-//             for(int  j=0; j<graph[v].size(); j++) {
-//                 Edge e = graph[v].get(j);
-//                 indeg[e.des]++;
-//             }
-//         }
-//      }
-//      public static void topSort(ArrayList<Edge>[] graph) {
-//         int indeg[] = new int[graph.length];
-//         calIndeg(graph, indeg);
-//         Queue<Integer> q = new LinkedList<>();
+            for(int  j=0; j<graph[v].size(); j++) {
+                Edge e = graph[v].get(j);
+                indeg[e.des]++;
+            }
+        }
+     }
+     public static void topSort(ArrayList<Edge>[] graph) {
+        int indeg[] = new int[graph.length];
+        calIndeg(graph, indeg);
+        Queue<Integer> q = new LinkedList<>();
 
-//             for(int i=0; i<indeg.length; i++) {
-//                 if(indeg[i] == 0) {
-//                     q.add(i);
-//                 }
-//             }
+            for(int i=0; i<indeg.length; i++) {
+                if(indeg[i] == 0) {
+                    q.add(i);
+                }
+            }
 
-//              while(!q.isEmpty()) {
-//                  int curr = q.remove();
-//                 System.out.print(curr + " ");
+             while(!q.isEmpty()) {
+                 int curr = q.remove();
+                System.out.print(curr + " ");
 
-//                 for(int i=0; i<graph[curr].size(); i++) {
-//                     Edge e = graph[curr].get(i);
-//                     indeg[e.des]--;
-//                     if(indeg[e.des] == 0) {
-//                         q.add(e.des);
-//                     }
-//                 }
-//             }
-//     }
+                for(int i=0; i<graph[curr].size(); i++) {
+                    Edge e = graph[curr].get(i);
+                    indeg[e.des]--;
+                    if(indeg[e.des] == 0) {
+                        q.add(e.des);
+                    }
+                }
+            }
+    }
 
-//     public static void main(String agrs[]) {
-//         int v = 6;
-//         ArrayList<Edge>[] graph = new ArrayList[v]; //null
-//         createGraph(graph, v);
-//         topSort(graph);
-//       }
-// }
+    public static void main(String agrs[]) {
+        int v = 6;
+        ArrayList<Edge>[] graph = new ArrayList[v]; //null
+        createGraph(graph, v);
+        topSort(graph);
+      }
+}
 
 
 // //All path from source to destination..
