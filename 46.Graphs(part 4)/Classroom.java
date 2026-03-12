@@ -1,77 +1,77 @@
-// //Bellman Ford algorithm
-// import java.util.*;
-// public class Classroom {
-//     static class Edge {
-//         int src;
-//         int des;
-//         int wt;
+//Bellman Ford algorithm
+import java.util.*;
+public class Classroom {
+    static class Edge {
+        int src;
+        int des;
+        int wt;
 
-//         public Edge(int s, int d, int w) {
-//             this.src = s;
-//             this.des = d;
-//             this.wt = w;
-//         }
-//     }
+        public Edge(int s, int d, int w) {
+            this.src = s;
+            this.des = d;
+            this.wt = w;
+        }
+    }
 
-//     static void createGraph(ArrayList<Edge> graph[], int V) {
-//         for(int i=0; i<V; i++) {
-//             graph[i] = new ArrayList<>();
-//         }
+    static void createGraph(ArrayList<Edge> graph[], int V) {
+        for(int i=0; i<V; i++) {
+            graph[i] = new ArrayList<>();
+        }
      
-//         //0 vertex
-//         graph[0].add(new Edge(0, 1, 2));
-//         graph[0].add(new Edge(0, 2, 4));
+        //0 vertex
+        graph[0].add(new Edge(0, 1, 2));
+        graph[0].add(new Edge(0, 2, 4));
 
-//         //1 vertex
-//         graph[1].add(new Edge(1, 2, -4));
+        //1 vertex
+        graph[1].add(new Edge(1, 2, -4));
 
-//         //2 vertex
-//         graph[2].add(new Edge(2, 3, 2));
+        //2 vertex
+        graph[2].add(new Edge(2, 3, 2));
 
-//         //3 vertex
-//         graph[3].add(new Edge(3, 4, 4));
+        //3 vertex
+        graph[3].add(new Edge(3, 4, 4));
         
-//         //4 vertex
-//         graph[4].add(new Edge(4, 1, -1));         
-//     }
+        //4 vertex
+        graph[4].add(new Edge(4, 1, -1));         
+    }
 
-//     public static void bellmanFord(ArrayList<Edge> graph[], int src) {
-//         int dist[] = new int[graph.length];
+    public static void bellmanFord(ArrayList<Edge> graph[], int src) {
+        int dist[] = new int[graph.length];
 
-//         for(int i=0; i<dist.length; i++) {
-//             if(i != src) {
-//                 dist[i] = Integer.MAX_VALUE;
-//             }
+        for(int i=0; i<dist.length; i++) {
+            if(i != src) {
+                dist[i] = Integer.MAX_VALUE;
+            }
           
-//         }
+        }
 
-//         int V = graph.length;
-//         for(int i=0; i<V-1; i++) {
-//             for(int j=0; j<graph.length; j++) {
-//                 for(int k=0; k<graph[j].size(); k++) {
-//                     Edge e = graph[j].get(k);
-//                     int u = e.src;
-//                     int v = e.des;
-//                     int wt = e.wt;
+        int V = graph.length;
+        for(int i=0; i<V-1; i++) {
+            for(int j=0; j<graph.length; j++) {
+                for(int k=0; k<graph[j].size(); k++) {
+                    Edge e = graph[j].get(k);
+                    int u = e.src;
+                    int v = e.des;
+                    int wt = e.wt;
 
-//                     if(dist[u] != Integer.MAX_VALUE && dist[v] > dist[u] + wt) {
-//                         dist[v] = dist[u] + wt;
-//                     }
-//                 }
-//             }
-//         }
+                    if(dist[u] != Integer.MAX_VALUE && dist[v] > dist[u] + wt) {
+                        dist[v] = dist[u] + wt;
+                    }
+                }
+            }
+        }
 
-//         for(int i=0; i<dist.length; i++) {
-//             System.out.print(dist[i] + " ");
-//         }
-//     }
-//     public static void main(String agrs[]) {
-//         int V = 5;
-//         ArrayList<Edge>[] graph = new ArrayList[V]; //null
-//         createGraph(graph, V);
-//         bellmanFord(graph, 0);
-//       }
-// }
+        for(int i=0; i<dist.length; i++) {
+            System.out.print(dist[i] + " ");
+        }
+    }
+    public static void main(String agrs[]) {
+        int V = 5;
+        ArrayList<Edge>[] graph = new ArrayList[V]; //null
+        createGraph(graph, V);
+        bellmanFord(graph, 0);
+      }
+}
 
 //Prim's algorithm or minimum spanning tree..
 import java.util.*;
